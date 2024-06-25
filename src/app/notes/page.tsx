@@ -6,6 +6,7 @@ export const metadata:Metadata = {
 }
 
 export default function NotesPage(){
+  
     return <>
     <div>
         Notes goes here
