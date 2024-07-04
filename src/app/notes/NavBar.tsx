@@ -1,6 +1,8 @@
 "use client";
 
-import AddNoteDialog from "@/components/AddNoteDialog";
+import AddNoteEditDialog from "@/components/AddEditNoteDialog";
+import ConfirmationDialog from "@/components/ConfirmationDialog";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
@@ -9,7 +11,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function NavBar() {
-  const [showAddNoteDialog, setShowAddNoteDialog] = useState(false);
+  const [showAddEditNoteDialog, setShowEditAddNoteDialog] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [showDialogResponse, setShowDialogResponse] = useState(0);
+  // setShowDialogResponse(undefined)
   return (
     <>
       <div className="p-4 shadow">
@@ -26,14 +31,30 @@ export default function NavBar() {
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
-            <Button onClick={()=> setShowAddNoteDialog(true)}>
+            <ThemeToggleButton/>
+            <Button onClick={() => setShowEditAddNoteDialog(true)}>
               <Plus size={20} className="mr-2" />
               Add Note
             </Button>
           </div>
         </div>
       </div>
-      <AddNoteDialog open={showAddNoteDialog} setOpen={setShowAddNoteDialog}/>
+      {/* <Button onClick={() => setShowDialog(true)}>Delete Confirmation</Button>
+{
+  showDialogResponse==0?<>Undefined</>:showDialogResponse==1?<>Success</>:<>Failed</>
+} */}
+    
+
+      <ConfirmationDialog
+        message="Are you sure you want to delete?"
+        setDialogResponse={setShowDialogResponse}
+        open={showDialog}
+        setOpen={setShowDialog}
+      />
+      <AddNoteEditDialog
+        open={showAddEditNoteDialog}
+        setOpen={setShowEditAddNoteDialog}
+      />
     </>
   );
 }
