@@ -81,10 +81,13 @@ export default function AddNoteEditDialog({
 
   async function deleteNote() {
     if (!noteToEdit) return;
-    setOpen(false);
+
     setShowDialog(true);
-    setShowDialogResponse(0);
+    console.log("The state is changed "+ showDialogResponse);
+    
     if (showDialogResponse === 1) {
+      console.log(showDialogResponse);
+      // setShowDialog(false);
       setDeleteInProgress(true);
       try {
         const response = await fetch("/api/notes", {
@@ -97,8 +100,13 @@ export default function AddNoteEditDialog({
         console.error(error);
         alert("Something went wrong.Please try again later");
       } finally {
+        setOpen(false);
         setDeleteInProgress(false);
       }
+    } else if (showDialogResponse === 2) {
+      console.log(showDialogResponse);
+      // setShowDialog(false);
+     
     }
   }
 
@@ -163,7 +171,7 @@ export default function AddNoteEditDialog({
         </DialogContent>
       </Dialog>
       <ConfirmationDialog
-        message={"Are you sure you want to delete ?\n"+noteTitle}
+        message={"Are you sure you want to delete ?\n" + noteTitle}
         setDialogResponse={setShowDialogResponse}
         open={showDialog}
         setOpen={setShowDialog}

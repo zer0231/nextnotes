@@ -9,12 +9,13 @@ import { Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {dark} from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 export default function NavBar() {
   const [showAddEditNoteDialog, setShowEditAddNoteDialog] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
-  const [showDialogResponse, setShowDialogResponse] = useState(0);
-  // setShowDialogResponse(undefined)
+const {theme} = useTheme();
+
   return (
     <>
       <div className="p-4 shadow">
@@ -28,6 +29,7 @@ export default function NavBar() {
             <UserButton
               afterSignOutUrl="/"
               appearance={{
+                baseTheme:(theme ==="dark"?dark:undefined),
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
@@ -39,18 +41,8 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-      {/* <Button onClick={() => setShowDialog(true)}>Delete Confirmation</Button>
-{
-  showDialogResponse==0?<>Undefined</>:showDialogResponse==1?<>Success</>:<>Failed</>
-} */}
-    
 
-      <ConfirmationDialog
-        message="Are you sure you want to delete?"
-        setDialogResponse={setShowDialogResponse}
-        open={showDialog}
-        setOpen={setShowDialog}
-      />
+
       <AddNoteEditDialog
         open={showAddEditNoteDialog}
         setOpen={setShowEditAddNoteDialog}
