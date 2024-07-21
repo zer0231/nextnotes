@@ -10,7 +10,7 @@ export const metadata:Metadata = {
 export default function SignInPage(){
     return (
         <div className="flex h-screen items-center justify-center">
-            <SignIn appearance={{variables:{colorPrimary:"#FF0000"}}}/>
+            <SignIn appearance={{variables:{colorPrimary:"#696969"}}}/>
         </div>
     )
 }

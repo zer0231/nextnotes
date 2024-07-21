@@ -11,18 +11,18 @@ import Link from "next/link";
 import { useState } from "react";
 import {dark} from "@clerk/themes";
 import { useTheme } from "next-themes";
+import AIChatButton from "@/components/AIChatButton";
 
 export default function NavBar() {
   const [showAddEditNoteDialog, setShowEditAddNoteDialog] = useState(false);
-const {theme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <>
       <div className="p-4 shadow">
         <div className="max-w-7xl m-auto flex flex-wrap gap-4 items-center justify-between">
           <Link href="/notes" className="flex items-center gap-1">
-            {/* <Image src={logo} alt="OpenAi-Notes logo" width={40} height={40}/> */}
-            Logo goes here
+          <Image src={theme==="light"?"/logo/logo.png":"/logo/logo_light.png"} alt="OpenAi-Notes logo" width={40} height={40}/>
             <span className="font-bold">OpenAi-Notes</span>
           </Link>
           <div className="flex items-center gap-4">
@@ -38,6 +38,7 @@ const {theme} = useTheme();
               <Plus size={20} className="mr-2" />
               Add Note
             </Button>
+            <AIChatButton/>
           </div>
         </div>
       </div>
