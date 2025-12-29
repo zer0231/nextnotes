@@ -18,7 +18,7 @@ export default function Home() {
         </span>
       </div>
       <p className="text-center max-w-prose">
-        A note taking app with open-ai integrated. ez
+        <div className="p-5">A note taking app with AI integrated</div>
       </p>
 
       {/* Since button is an element of shadcn  and in order to goto next page we must use link so we use button as child this way */}

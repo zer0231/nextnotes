@@ -48,8 +48,12 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
 
 function ChatMessage({ message: { role, content } }: { message: Message }) {
   return (
-    <div>
-      <div>{role}</div>
+    <div className="p-2">
+      {role=="user" ? (
+        <div className="text-blue-500">You</div>
+      ) : (
+        <div className="text-green-500">AI</div>
+      )}
       <div>{content}</div>
     </div>
   );
