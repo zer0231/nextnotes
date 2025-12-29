@@ -17,9 +17,9 @@ export default function ThemeToggleButton() {
         }
       }}
     >
-      <Sun className="dark:scale-0 dark:-rotate-90 scale-100 rotate-0 transition-all"/>
-      <Moon className="dark:scale-100 scale-0 dark:rotate-0 rotate-90 transition-all"/>
-      <span className="sr-only">Toggle theme</span>{" "}
+      <Sun className="dark:scale-0 dark:-rotate-90 scale-100 rotate-0 transition-all dark:hidden"/>
+      <Moon className="dark:scale-100 scale-0 dark:rotate-0 rotate-90 transition-all hidden dark:block"/>
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 }
